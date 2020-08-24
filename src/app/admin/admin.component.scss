@@ -1,0 +1,43 @@
+.card-header {
+}
+.card {
+  &-header {
+    font-weight: 500;
+  }
+  &-body {
+    justify-content: space-between;
+    display: flex;
+    align-items: center;
+  }
+  &-text {
+    display: flex;
+    align-items: center;
+  }
+  & i {
+    font-size: 2rem;
+  }
+  & small {
+    font-size: 60%;
+    margin-left: 10px;
+    opacity: 0.85;
+    & i {
+      opacity: inherit;
+    }
+  }
+}
+.form-row {
+  justify-content: center;
+  align-items: flex-end;
+  & label {
+    color: white;
+    font-weight: 500;
+  }
+}
+.btn-submit {
+  background-color: #ef6718;
+  border-color: #ef6718;
+  &:hover {
+    background-color: #e05a0d;
+    border-color: #e05a0d;
+  }
+}

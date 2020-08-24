@@ -1,0 +1,71 @@
+<ul class="list-group list-group-flush" *ngIf="students.length > 0">
+  <li
+    class="list-group-item py-3"
+    *ngFor="let student of students; let i = index"
+  >
+    <div class="d-flex w-100 justify-content-between align-items-center">
+      <div>
+        <span class="badge badge-blue">{{ i + 1 }} </span>
+        <div
+          class="d-inline-block"
+          *ngIf="!student.editable"
+          (dblclick)="student.editable = true"
+        >
+          <h6 class="h6 mb-0">
+            {{ student.firstName | titlecase }}
+            {{ student.lastName | titlecase }}
+          </h6>
+        </div>
+
+        <input
+          type="text"
+          placeholder="{{ student.firstName }}"
+          *ngIf="student.editable"
+          [(ngModel)]="student.firstName"
+          (blur)="updateStudent(student)"
+          (keyup.enter)="updateStudent(student)"
+        />
+        <input
+          type="text"
+          class="ml-3"
+          placeholder="{{ student.lastName }}"
+          *ngIf="student.editable"
+          [(ngModel)]="student.lastName"
+          (blur)="updateStudent(student)"
+          (keyup.enter)="updateStudent(student)"
+        />
+      </div>
+      <div>
+        <span class="badge badge-danger mr-5 p-1" *ngIf="student.score < 65"
+          >Failing</span
+        >
+        <div
+          class="d-inline-block"
+          *ngIf="!student.editable"
+          (dblclick)="student.editable = true"
+        >
+          <h6 class="h6 mb-0">{{ student.score }} / 100</h6>
+        </div>
+        <input
+          type="text"
+          placeholder="{{ student.score }}"
+          *ngIf="student.editable"
+          [(ngModel)]="student.score"
+          (blur)="updateStudent(student)"
+          (keyup.enter)="updateStudent(student)"
+          [textMask]="{ mask: mask, guide: false }"
+        />
+        <button
+          type="button"
+          class="btn btn-danger btn-xsm ml-5"
+          (click)="deleteStudent(student)"
+        >
+          <i class="las la-trash"></i>
+        </button>
+      </div>
+    </div>
+  </li>
+</ul>
+<div *ngIf="students.length === 0" class="text-center">
+  <h5 class="text-white">No Students To Display!</h5>
+</div>

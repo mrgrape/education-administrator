@@ -1,0 +1,106 @@
+<div class="container-fluid px-5 mb-5">
+  <div class="row">
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Total Student Scores</div>
+        <div class="card-body">
+          <i class="las la-book-open"></i>
+          <h2 class="card-text">{{ students.length }}<small> scores</small></h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Student Grade: Lowest</div>
+        <div class="card-body">
+          <i class="las la-thumbs-down"></i>
+          <h2 class="card-text">
+            {{ minScore }}<small> <i class="las la-percent"></i></small>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Student Grade: Highest</div>
+        <div class="card-body">
+          <i class="las la-thumbs-up"></i>
+          <h2 class="card-text">
+            {{ maxScore }}<small> <i class="las la-percent"></i></small>
+          </h2>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-6 col-md-3">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-header">Student Grades: Average</div>
+        <div class="card-body">
+          <i class="las la-chart-area"></i>
+          <h2 class="card-text">
+            {{ averageScore }}<small> <i class="las la-percent"></i></small>
+          </h2>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-12">
+      <form [formGroup]="studentScoreForm" (ngSubmit)="onSaveChanges()">
+        <div class="form-row mt-4">
+          <div class="col-md-3 mb-3">
+            <label for="firstName">First Name</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="firstName"
+              placeholder="First name"
+              formControlName="firstName"
+            />
+          </div>
+          <div class="col-md-3 mb-3">
+            <label for="lastName">Last Name</label>
+            <input
+              type="text"
+              class="form-control mb-2 mr-sm-2"
+              id="lastName"
+              placeholder="Last name"
+              formControlName="lastName"
+            />
+          </div>
+          <div class="col-md-2 mb-3">
+            <label for="grade">Test Score</label>
+            <div class="input-group mb-2 mr-sm-2">
+              <input
+                type="text"
+                class="form-control"
+                [textMask]="{ mask: mask, guide: false }"
+                id="grade"
+                placeholder="Score"
+                formControlName="score"
+              />
+              <div class="input-group-append">
+                <span class="input-group-text">/ 100</span>
+              </div>
+            </div>
+          </div>
+
+          <div class="mb-3">
+            <button
+              type="submit"
+              class="btn btn-submit text-white mb-2"
+              [disabled]="studentScoreForm.pristine || !studentScoreForm.valid"
+            >
+              Enter Grade
+            </button>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-sm-10 col-md-10">
+      <app-students></app-students>
+    </div>
+  </div>
+</div>

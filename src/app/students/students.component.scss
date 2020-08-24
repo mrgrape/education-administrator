@@ -1,0 +1,17 @@
+.list-group-flush {
+  border-radius: 0.25rem;
+}
+.list-group-flush > .list-group-item {
+  &:hover {
+    background: #f9f9f9;
+  }
+}
+.badge-blue {
+  color: white;
+  background-color: #16396b;
+  font-size: 1rem;
+  margin-right: 1rem;
+}
+.h6 {
+  cursor: pointer;
+}
